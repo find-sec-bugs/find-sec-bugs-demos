@@ -49,14 +49,14 @@ task findSecurityBugs(type: FindBugs) {
 ## Usage
 
 ```
-> gradlew findbugsSecurity
+> gradlew findSecurityBugs
 Parallel execution with configuration on demand is an incubating feature.
-:app:findbugsSecurity
-FindBugs rule violations were found. See the report at: file:///C:/Code/workspace-java/find-sec-bugs-demos/android-insecure-bank-v2/app/build/findbugsReports/security.xml
+:app:findSecurityBugs
+FindBugs rule violations were found. See the report at: file:///C:/Code/workspace-java/find-sec-bugs-demos/android-insecure-bank-v2/app/build/findbugsReports/findSecurityBugs.xml
 
 BUILD SUCCESSFUL
 
-Total time: 34.063 secs
+Total time: 30.557 secs
 ```
 
 Special thanks to [Krishna Pandey](https://github.com/krishna-pandey) who provided the [initial configuration example](https://github.com/find-sec-bugs/find-sec-bugs/issues/134#issuecomment-162152102)
