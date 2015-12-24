@@ -1,6 +1,6 @@
 # Android configuration sample (Insecure Bank v.2)
 
-The code of this application is a copy of [Insecure Bank v.2](https://github.com/dineshshetty/Android-InsecureBankv2) a vulnerable mobile application.
+The code of this application is a copy of [Insecure Bank v.2](https://github.com/dineshshetty/Android-InsecureBankv2) a vulnerable mobile application maded by [Dinesh Shetty](https://github.com/dineshshetty).
 
 The configuration for FindBugs is made in the Gradle configuration (`build.gradle`).
 
