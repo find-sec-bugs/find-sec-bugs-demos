@@ -49,7 +49,6 @@ task findSecurityBugs(type: FindBugs) {
 ## Usage
 
 ```
-Philippe@HEXPC C:\Code\workspace-java\find-sec-bugs-demos\android-insecure-bank-v2
 > gradlew findbugsSecurity
 Parallel execution with configuration on demand is an incubating feature.
 :app:findbugsSecurity
