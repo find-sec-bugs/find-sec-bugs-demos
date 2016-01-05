@@ -81,6 +81,9 @@
     </dependencies>
 
     <profiles>
+
+        <!-- Compilation of the JSP with Weblogic 12.1.3.0 -->
+
         <profile>
             <id>weblogic1213Jsp</id>
 
@@ -109,6 +112,7 @@
                                     <goal>appc</goal>
                                 </goals>
                                 <configuration>
+                                    <continueCompilation>true</continueCompilation>
                                     <writeInferredDescriptors>true</writeInferredDescriptors>
                                     <commentary>true</commentary>
                                     <lineNumbers>true</lineNumbers>
@@ -123,6 +127,7 @@
             </build>
 
         </profile>
+
 
         <!-- Compilation of the JSP with Jetty 9.3.6 -->
         <profile>
