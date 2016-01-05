@@ -1,0 +1,33 @@
+# Routes
+# This file defines all application routes (Higher priority routes first)
+# ~~~~
+
+# Home page
+GET     /                           controllers.PersonController.index
+POST    /person                     controllers.PersonController.addPerson
+GET     /persons                    controllers.PersonController.getPersons
+
+GET     /cmd/vulnerable1            controllers.CommandController.vulnerable1(value:String)
+GET     /cmd/vulnerable2            controllers.CommandController.vulnerable2(value:String)
+GET     /cmd/vulnerable3            controllers.CommandController.vulnerable3(value:String)
+GET     /cmd/vulnerable4            controllers.CommandController.vulnerable4(value:String)
+GET     /cmd/vulnerable5            controllers.CommandController.vulnerable5(value:String)
+GET     /cmd/vulnerable6            controllers.CommandController.vulnerable6(value:String)
+
+GET     /cmd/safe1                  controllers.CommandController.safe1()
+
+GET     /xss/test1                  controllers.XssController.xssTest1(value:String)
+GET     /xss/test2                  controllers.XssController.xssTest2(value:String)
+
+GET     /redir/redirect1            controllers.RedirectController.redirect1(url:String)
+GET     /redir/redirect2            controllers.RedirectController.redirect2(url:String)
+
+GET     /rand/random1               controllers.RandomValueController.random1()
+GET     /rand/random2               controllers.RandomValueController.random2()
+GET     /rand/random3               controllers.RandomValueController.random3()
+GET     /rand/random4               controllers.RandomValueController.random4()
+GET     /rand/random5               controllers.RandomValueController.random5_various()
+
+
+# Map static resources from the /public folder to the /assets URL path
+GET     /assets/*file               controllers.Assets.versioned(path="/public", file: Asset)
