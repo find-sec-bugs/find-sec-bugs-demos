@@ -25,6 +25,10 @@ dependencies {
 Add the following task to configure bytecode location and the security rules filter.
 
 ```groovy
+apply plugin: 'findbugs'
+
+...
+
 //FindBugs task that load security rules only
 task findSecurityBugs(type: FindBugs) {
 
