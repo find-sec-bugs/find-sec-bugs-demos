@@ -5,6 +5,7 @@ This project is using very similar configration to the Android project. It has o
 ## Configuration summary
 
 Create the Groovy compiler configuration script
+
 **gradle/config.groovy**
 ```groovy
 withConfig(configuration) {
@@ -13,6 +14,7 @@ withConfig(configuration) {
 ```
 
 Configure the Groovy compiler
+
 **build.gradle**
 ```groovy
 compileGroovy {
