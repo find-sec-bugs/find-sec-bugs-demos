@@ -1,0 +1,41 @@
+apply plugin: 'groovy'
+
+apply plugin: 'findbugs'
+
+compileGroovy {
+    //Configuration that will force the static compilation
+    groovyOptions.configurationScript = file("gradle/config.groovy")
+}
+
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    compile 'org.codehaus.groovy:groovy:2.3.7'
+
+    //Dependencies for FindBugs and FindBugs plugins
+    findbugs 'com.google.code.findbugs:findbugs:3.0.1'
+    findbugs configurations.findbugsPlugins.dependencies
+    findbugsPlugins 'com.h3xstream.findsecbugs:findsecbugs-plugin:1.4.6'
+}
+
+//FindBugs task that load security rules only
+task findSecurityBugs(type: FindBugs) {
+
+    classes = fileTree(project.rootDir.absolutePath).include("**/*.class");
+    source = fileTree(project.rootDir.absolutePath).include("**/*.groovy");
+    classpath = files()
+    pluginClasspath = project.configurations.findbugsPlugins
+
+    findbugs {
+        toolVersion = "3.0.1"
+        ignoreFailures = true
+        reportsDir = file("$project.buildDir/findbugsReports")
+        effort = "max"
+        reportLevel = "low"
+        includeFilter = file("$rootProject.projectDir/fsb-include.xml")
+        excludeFilter = file("$rootProject.projectDir/fsb-exclude.xml")
+    }
+}

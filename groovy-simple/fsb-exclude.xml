@@ -1,0 +1,3 @@
+<FindBugsFilter>
+    <!-- Add filter here to eliminate Detector that are too noisy or avoid scanning certain files -->
+</FindBugsFilter>

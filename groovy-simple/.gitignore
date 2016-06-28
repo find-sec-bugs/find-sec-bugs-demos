@@ -1,0 +1,17 @@
+#Gradle
+/.gradle
+/build
+
+#IntelliJ
+*.iml
+/.idea
+/.idea_modules
+
+#Eclipse
+/.classpath
+/.project
+/.settings
+
+#Others
+logs
+target
