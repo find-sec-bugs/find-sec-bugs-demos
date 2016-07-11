@@ -16,8 +16,11 @@ GET     /cmd/vulnerable6            controllers.CommandController.vulnerable6(va
 
 GET     /cmd/safe1                  controllers.CommandController.safe1()
 
-GET     /xss/test1                  controllers.XssController.xssTest1(value:String)
-GET     /xss/test2                  controllers.XssController.xssTest2(value:String)
+GET     /xss/vulnerable1            controllers.XssController.vulnerable1(value:String)
+GET     /xss/vulnerable2            controllers.XssController.vulnerable2(value:String, contentType:String)
+GET     /xss/vulnerable3            controllers.XssController.vulnerable3(value:String)
+GET     /xss/potentiallyVulnerable  controllers.XssController.potentiallyVulnerable(value:String)
+GET     /xss/variousSafe            controllers.XssController.variousSafe(value:String)
 
 GET     /redir/redirect1            controllers.RedirectController.redirect1(url:String)
 GET     /redir/redirect2            controllers.RedirectController.redirect2(url:String)
