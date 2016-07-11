@@ -31,9 +31,10 @@ GET     /rand/random5               controllers.RandomValueController.random5_va
 GET     /data/vulnerable1           controllers.SensitiveDataExposureController.vulnerable1(value:String)
 GET     /data/vulnerable2           controllers.SensitiveDataExposureController.vulnerable2(value:String)
 GET     /data/vulnerable3           controllers.SensitiveDataExposureController.vulnerable3(value:String)
-GET     /data/safe1                 controllers.SensitiveDataExposureController.safe1()
-GET     /data/safe2                 controllers.SensitiveDataExposureController.safe2()
-GET     /data/safe3                 controllers.SensitiveDataExposureController.safe3()
+GET     /data/safePlayConfig        controllers.SensitiveDataExposureController.safePlayConfig()
+GET     /data/safeEnvProperty       controllers.SensitiveDataExposureController.safeEnvProperty()
+GET     /data/safeUntainted         controllers.SensitiveDataExposureController.safeUntainted(value:String)
+GET     /data/safeNoSensitiveData   controllers.SensitiveDataExposureController.safeNoSensitiveData(value:String)
 
 # Map static resources from the /public folder to the /assets URL path
 GET     /assets/*file               controllers.Assets.versioned(path="/public", file: Asset)
