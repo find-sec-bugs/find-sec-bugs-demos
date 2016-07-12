@@ -18,7 +18,7 @@ class XssController extends Controller {
   }
 
   def potentiallyVulnerable(value:String) = Action {
-    Ok(views.html.xssString.render("Hello !"))
+    Ok(views.html.xssString.render(value))
   }
 
   def variousSafe(value:String) = Action {
