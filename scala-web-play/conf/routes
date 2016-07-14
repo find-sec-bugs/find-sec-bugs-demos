@@ -39,5 +39,11 @@ GET     /data/safeEnvProperty       controllers.SensitiveDataExposureController.
 GET     /data/safeUntainted         controllers.SensitiveDataExposureController.safeUntainted(value:String)
 GET     /data/safeNoSensitiveData   controllers.SensitiveDataExposureController.safeNoSensitiveData(value:String)
 
+GET     /sql/vulnerableSlick1       controllers.SqlController.vulnerableSlick1(value:String)
+GET     /sql/variousSafeSlick1      controllers.SqlController.variousSafeSlick1(value:String)
+GET     /sql/vulnerableSlick2       controllers.SqlController.vulnerableSlick2(oldValue:String, newValue:String)
+GET     /sql/variousSafeSlick2      controllers.SqlController.variousSafeSlick2(oldValue:String, newValue:String)
+# GET     /sql/vulnerableSlick3       controllers.SqlController.vulnerableSlick3(value:String)
+
 # Map static resources from the /public folder to the /assets URL path
 GET     /assets/*file               controllers.Assets.versioned(path="/public", file: Asset)
