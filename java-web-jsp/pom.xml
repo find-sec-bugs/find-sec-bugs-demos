@@ -195,6 +195,42 @@
                 </plugins>
             </build>
         </profile>
+
+
+        <!-- Compilation of the JSP with Tomcat -->
+
+        <profile>
+            <id>tomcat8Jsp</id>
+
+            <activation>
+                <activeByDefault>false</activeByDefault>
+            </activation>
+
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.jasig.mojo.jspc</groupId>
+                        <artifactId>jspc-maven-plugin</artifactId>
+                        <executions>
+                            <execution>
+                                <goals>
+                                    <goal>compile</goal>
+                                </goals>
+                            </execution>
+                        </executions>
+
+                        <!-- Use the Tomcat 8 JSP compiler -->
+                        <dependencies>
+                            <dependency>
+                                <groupId>org.jasig.mojo.jspc</groupId>
+                                <artifactId>jspc-compiler-tomcat8</artifactId>
+                                <version>2.0.2</version>
+                            </dependency>
+                        </dependencies>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
     </profiles>
 
 
