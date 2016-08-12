@@ -4,12 +4,16 @@ This project is using very similar configration to the Android project. It has o
 
 ## Configuration summary
 
-**gradlgroovye/config.groovy**
+Create the Groovy compiler configuration script
+
+**gradle/config.groovy**
 ```groovy
 withConfig(configuration) {
      ast(groovy.transform.CompileStatic)
 }
 ```
+
+Configure the Groovy compiler
 
 **build.gradle**
 ```groovy
@@ -18,7 +22,6 @@ compileGroovy {
     groovyOptions.configurationScript = file("gradle/config.groovy")
 }
 ```
-
 
 Add the findbugs dependencies
 
