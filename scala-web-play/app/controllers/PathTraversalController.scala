@@ -2,6 +2,7 @@ package controllers
 
 import java.io.File
 import java.net.URI
+import org.apache.commons.io.FilenameUtils
 
 import play.api.mvc.{Action, Controller}
 
@@ -34,13 +35,25 @@ class PathTraversalController extends Controller {
     Source.fromFile("Safe")
     Source.fromFile("Safe", "UTF-8")
     Source.fromFile(new URI("Safe"))
-    val result = Source.fromFile(new URI("Safe"), "UTF-8")
+    Source.fromFile(new URI("Safe"), "UTF-8")
 
-    Ok("Result:\n"+result.getLines().mkString
+    val filename = "directory/" + FilenameUtils.getName(value)
+    Source.fromFile(new File(filename))
+    Source.fromFile(new File(filename), 100)
+    Source.fromFile(new File(filename), "UTF-8")
+    Source.fromFile(filename)
+    Source.fromFile(filename, "UTF-8")
+    Source.fromFile(new URI(filename))
+    val result = Source.fromFile(new URI(filename), "UTF-8")
+
+    Ok("Result:\n"+result.getLines().mkString)
   }
 
   def safeOut(value:String) = Action {
     reflect.io.File("Safe")
+
+    val filename = "directory/" + FilenameUtils.getName(value)
+    reflect.io.File(filename)
 
     Ok("Result:\n"+"Done.")
   }
