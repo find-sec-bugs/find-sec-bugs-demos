@@ -13,15 +13,15 @@ class PathTraversalController extends Controller {
     Source.fromFile(new File(value))
     Source.fromFile(new File(value), 100)
     Source.fromFile(new File(value), "UTF-8")
-    Source.fromFile(value).getLines()
+    Source.fromFile(value)
     Source.fromFile(value, "UTF-8")
     Source.fromFile(new URI(value))
     val result = Source.fromFile(new URI(value), "UTF-8")
 
-    Ok("Result:\n"+result)
+    Ok("Result:\n"+result.getLines().mkString)
   }
 
-  def vulnerableOut(value:String, value2:String) = Action {
+  def vulnerableOut(value:String) = Action {
     reflect.io.File(value)
 
     Ok("Result:\n"+"Done.")
@@ -31,12 +31,12 @@ class PathTraversalController extends Controller {
     Source.fromFile(new File("Safe"))
     Source.fromFile(new File("Safe"), 100)
     Source.fromFile(new File("Safe"), "UTF-8")
-    Source.fromFile("Safe").getLines()
+    Source.fromFile("Safe")
     Source.fromFile("Safe", "UTF-8")
     Source.fromFile(new URI("Safe"))
     val result = Source.fromFile(new URI("Safe"), "UTF-8")
 
-    Ok("Result:\n"+result)
+    Ok("Result:\n"+result.getLines().mkString
   }
 
   def safeOut(value:String) = Action {
