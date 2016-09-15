@@ -11,9 +11,11 @@ import scala.io.Source
 class PathTraversalController extends Controller {
 
   def vulnerableIn(value:String) = Action {
-    Source.fromFile(new File(value))
-    Source.fromFile(new File(value), 100)
-    Source.fromFile(new File(value), "UTF-8")
+    // The 3 following cases should be handled by the Java PathTraversal detector
+    //Source.fromFile(new File(value))
+    //Source.fromFile(new File(value), 100)
+    //Source.fromFile(new File(value), "UTF-8")
+
     Source.fromFile(value)
     Source.fromFile(value, "UTF-8")
     Source.fromFile(new URI(value))
