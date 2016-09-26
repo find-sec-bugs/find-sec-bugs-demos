@@ -14,6 +14,7 @@ libraryDependencies ++= Seq(
   "com.h2database" % "h2" % "1.4.177",
   "org.spire-math" %% "spire" % "0.11.0",
   "org.owasp.encoder" % "encoder" % "1.2",
+  "commons-io" % "commons-io" % "2.5",
   specs2 % Test
 )     
 
