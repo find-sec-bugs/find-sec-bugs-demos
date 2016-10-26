@@ -14,7 +14,8 @@ libraryDependencies ++= Seq(
   "com.h2database" % "h2" % "1.4.177",
   "org.spire-math" %% "spire" % "0.11.0",
   "commons-io" % "commons-io" % "2.5",
-  specs2 % Test
+  specs2 % Test,
+  ws
 )     
 
 // Play provides two styles of routers, one expects its actions to be injected, the
