@@ -9,7 +9,7 @@ Here is a list of projects that have been built with the intention of being vuln
 
 > :warning: Make sure you are deploying them safely. Running any of the following applications could expose your machine to command execution. It is suggested running those in a container or a virtual machine.
 
-## Java Application
+## Java Applications
 
  - [WebGoat 7](https://github.com/WebGoat/WebGoat)
  - [WebGoat 6](https://github.com/WebGoat/WebGoat-Legacy)
@@ -26,7 +26,8 @@ Here is a list of projects that have been built with the intention of being vuln
  - [HackMe Books](http://www.mcafee.com/us/downloads/free-tools/hacmebooks.aspx)
  - [BodgeIt](https://github.com/psiinon/bodgeit)
 
-## Android applications
+## Android Applications
 
+ - [Insecure Bank](https://github.com/dineshshetty/Android-InsecureBankv2)
  - [Dodo Vulnerable Bank](https://github.com/CSPF-Founder/DodoVulnerableBank)
  - [Security Shepherd](https://www.owasp.org/index.php/OWASP_Security_Shepherd)
