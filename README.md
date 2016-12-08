@@ -24,6 +24,7 @@ Here is a list of projects that have been built with the intention of being vuln
  - [Vulnerable Spring](https://github.com/CSPF-Founder/VulnerableSpring)
  - [PuzzleMall](https://code.google.com/archive/p/puzzlemall/)
  - [HackMe Books](http://www.mcafee.com/us/downloads/free-tools/hacmebooks.aspx)
+ - [BodgeIt](https://github.com/psiinon/bodgeit)
 
 ## Android applications
 
