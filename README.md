@@ -15,7 +15,7 @@ Here is a list of projects that have been built with the intention of being vuln
  - [WebGoat 6](https://github.com/WebGoat/WebGoat-Legacy)
  - [SecuriBench Micro](https://github.com/too4words/securibench-micro)
  - [WAVSEP](https://github.com/sectooladdict/wavsep)
- - [DroidBench](https://github.com/secure-software-engineering/DroidBench)
+ - [Security Shepherd](https://www.owasp.org/index.php/OWASP_Security_Shepherd)
  - [WebBank](https://github.com/pentestingforfunandprofit/webbank)
  - [OWASP Benchmark](https://www.owasp.org/index.php/Benchmark)
  - [Grails NVisium](https://github.com/nVisium/grails-nV)
@@ -30,4 +30,5 @@ Here is a list of projects that have been built with the intention of being vuln
 
  - [Insecure Bank](https://github.com/dineshshetty/Android-InsecureBankv2)
  - [Dodo Vulnerable Bank](https://github.com/CSPF-Founder/DodoVulnerableBank)
- - [Security Shepherd](https://www.owasp.org/index.php/OWASP_Security_Shepherd)
+ - [DroidBench](https://github.com/secure-software-engineering/DroidBench)
+ - [Mobile Shepherd](https://github.com/OWASP/SecurityShepherd/tree/dev/MobileShepherd)
