@@ -14,8 +14,10 @@ libraryDependencies ++= Seq(
   "com.typesafe.play" %% "play-slick-evolutions" % "1.1.1",
   "com.h2database" % "h2" % "1.4.177",
   "org.spire-math" %% "spire" % "0.11.0",
+  "org.owasp.encoder" % "encoder" % "1.2",
   "commons-io" % "commons-io" % "2.5",
-  specs2 % Test
+  specs2 % Test,
+  ws
 )     
 
 // Play provides two styles of routers, one expects its actions to be injected, the
