@@ -4,13 +4,14 @@ version := "1.0-SNAPSHOT"
 
 lazy val root = (project in file(".")).enablePlugins(PlayScala,SonarRunnerPlugin)
 
-scalaVersion := "2.11.6"
+scalaVersion := "2.11.7"
 
 resolvers += "Scalaz Bintray Repo" at "https://dl.bintray.com/scalaz/releases"
 
 libraryDependencies ++= Seq(
-  "com.typesafe.play" %% "play-slick" % "1.1.0",
-  "com.typesafe.play" %% "play-slick-evolutions" % "1.1.0",
+  "com.typesafe.play" %% "anorm" % "2.5.0",
+  "com.typesafe.play" %% "play-slick" % "1.1.1",
+  "com.typesafe.play" %% "play-slick-evolutions" % "1.1.1",
   "com.h2database" % "h2" % "1.4.177",
   "org.spire-math" %% "spire" % "0.11.0",
   "org.owasp.encoder" % "encoder" % "1.2",
