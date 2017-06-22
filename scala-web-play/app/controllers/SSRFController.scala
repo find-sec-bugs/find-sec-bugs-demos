@@ -72,20 +72,6 @@ class SSRFController @Inject() (wSClient: WSClient)  extends Controller {
     }
   }
 
-  def derp() = {
-    wSClient.url("http://www.google.com").get()
-
-    wSClient.url("http://www.google.com").get().map { response =>
-      Ok(response.body)
-    }
-
-    WS.url("http://www.google.com").get()
-
-    WS.url("http://www.google.com").get().map { response =>
-      Ok(response.body)
-    }
-  }
-
   def safeGetNotTainted() = Action.async {
     // ####################
     // Play v.2.5.x
