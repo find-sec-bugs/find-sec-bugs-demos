@@ -34,19 +34,49 @@ class SSRFController extends Controller {
     }
 
     // This call could be used to attack another host from our server
-    WS.url("http://google.com").post(postValue).map { response =>
+    WS.url("http://www.google.com").post(postValue).map { response =>
       Ok(response.body)
     }
   }
 
   def safeGetNotTainted() = Action.async {
-    WS.url("http://google.com").get().map { response =>
+    WS.url("http://www.google.com").get()
+
+    WS.url("http://www.google.com").get().map { response =>
       Ok(response.body)
     }
   }
 
   def safePostNotTainted() = Action.async {
-    WS.url("http://google.com").post("key=value").map { response =>
+    WS.url("http://www.google.com").post("key=value").map { response =>
+      Ok(response.body)
+    }
+  }
+
+  def safeGetWithWhitelist(value:String, amount:Int) = Action.async {
+    var url = "http://mysite.com/error"
+
+    if (value == "transfer") {
+      url = "http://mysite.com/transfer?amount=" + amount
+    }
+
+    WS.url(url).get()
+
+    WS.url(url).get().map { response =>
+      Ok(response.body)
+    }
+  }
+
+  def safePostWithWhitelist(value:String, amount:Int) = Action.async {
+    var url = "http://mysite.com/error"
+
+    if (value == "transfer") {
+      url = "http://mysite.com/transfer"
+    }
+
+    WS.url(url).post("amount=" + amount)
+
+    WS.url(url).post("amount=" + amount).map { response =>
       Ok(response.body)
     }
   }
