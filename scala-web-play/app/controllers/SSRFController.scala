@@ -5,7 +5,10 @@ import play.api.mvc.{Action, Controller}
 import javax.inject._
 
 import play.api.Play.current
+
+import scala.concurrent.duration._
 import play.api.libs.concurrent.Execution.Implicits._
+import play.api.libs.ws.ahc.AhcCurlRequestLogger
 
 /**
   * This controller is used to test detection of potential SSRF.
@@ -24,6 +27,17 @@ class SSRFController @Inject() (wSClient: WSClient)  extends Controller {
     wSClient.url(value).get().map { response =>
       Ok(response.body)
     }
+
+    wSClient.url(value).withAuth("user", "password", WSAuthScheme.BASIC).get()
+    wSClient.url(value).withBody(EmptyBody).get()
+    wSClient.url(value).withFollowRedirects(true).get()
+    wSClient.url(value).withHeaders("Accept" -> "application/json").get()
+    wSClient.url(value).withMethod("GET").get()
+    wSClient.url(value).withQueryString("search" -> "play").get()
+    wSClient.url(value).withRequestFilter(AhcCurlRequestLogger()).get()
+    wSClient.url(value).withRequestTimeout(Duration(10000,MILLISECONDS)).get()
+    wSClient.url(value).withVirtualHost("192.168.2.1").get()
+    //wSClient.url(value).withProxyServer().get()
 
     // ####################
     // SBT 2.4.x
@@ -54,6 +68,17 @@ class SSRFController @Inject() (wSClient: WSClient)  extends Controller {
       Ok(response.body)
     }
 
+    wSClient.url(value).withAuth("user", "password", WSAuthScheme.BASIC).post(postValue)
+    wSClient.url(value).withBody(EmptyBody).post(postValue)
+    wSClient.url(value).withFollowRedirects(true).post(postValue)
+    wSClient.url(value).withHeaders("Accept" -> "application/json").post(postValue)
+    wSClient.url(value).withMethod("POST").post(postValue)
+    wSClient.url(value).withQueryString("search" -> "play").post(postValue)
+    wSClient.url(value).withRequestFilter(AhcCurlRequestLogger()).post(postValue)
+    wSClient.url(value).withRequestTimeout(Duration(10000,MILLISECONDS)).post(postValue)
+    wSClient.url(value).withVirtualHost("192.168.2.1").post(postValue)
+    //wSClient.url(value).withProxyServer().post(postValue)
+
     // ####################
     // SBT 2.4.x
     // ####################
@@ -82,6 +107,17 @@ class SSRFController @Inject() (wSClient: WSClient)  extends Controller {
       Ok(response.body)
     }
 
+    wSClient.url("http://www.google.ca").withAuth("user", "password", WSAuthScheme.BASIC).get()
+    wSClient.url("http://www.google.ca").withBody(EmptyBody).get()
+    wSClient.url("http://www.google.ca").withFollowRedirects(true).get()
+    wSClient.url("http://www.google.ca").withHeaders("Accept" -> "application/json").get()
+    wSClient.url("http://www.google.ca").withMethod("GET").get()
+    wSClient.url("http://www.google.ca").withQueryString("search" -> "play").get()
+    wSClient.url("http://www.google.ca").withRequestFilter(AhcCurlRequestLogger()).get()
+    wSClient.url("http://www.google.ca").withRequestTimeout(Duration(10000,MILLISECONDS)).get()
+    wSClient.url("http://www.google.ca").withVirtualHost("192.168.2.1").get()
+    //wSClient.url("http://www.google.ca").withProxyServer().get()
+
     // ####################
     // Play v.2.4.x
     // ####################
@@ -101,6 +137,17 @@ class SSRFController @Inject() (wSClient: WSClient)  extends Controller {
     wSClient.url("http://www.google.com").post("key=value").map { response =>
       Ok(response.body)
     }
+
+    wSClient.url("http://www.google.ca").withAuth("user", "password", WSAuthScheme.BASIC).post("key=value")
+    wSClient.url("http://www.google.ca").withBody(EmptyBody).post("key=value")
+    wSClient.url("http://www.google.ca").withFollowRedirects(true).post("key=value")
+    wSClient.url("http://www.google.ca").withHeaders("Accept" -> "application/json").post("key=value")
+    wSClient.url("http://www.google.ca").withMethod("POST").post("key=value")
+    wSClient.url("http://www.google.ca").withQueryString("search" -> "play").post("key=value")
+    wSClient.url("http://www.google.ca").withRequestFilter(AhcCurlRequestLogger()).post("key=value")
+    wSClient.url("http://www.google.ca").withRequestTimeout(Duration(10000,MILLISECONDS)).post("key=value")
+    wSClient.url("http://www.google.ca").withVirtualHost("192.168.2.1").post("key=value")
+    //wSClient.url("http://www.google.ca").withProxyServer().post("key=value")
 
     // ####################
     // Play v.2.4.x
@@ -122,11 +169,22 @@ class SSRFController @Inject() (wSClient: WSClient)  extends Controller {
     // ####################
     // Play v.2.5.x
     // ####################
-    wSClient.url("http://www.google.com").get()
+    wSClient.url(url).get()
 
-    wSClient.url("http://www.google.com").get().map { response =>
+    wSClient.url(url).get().map { response =>
       Ok(response.body)
     }
+
+    wSClient.url(url).withAuth("user", "password", WSAuthScheme.BASIC).get()
+    wSClient.url(url).withBody(EmptyBody).get()
+    wSClient.url(url).withFollowRedirects(true).get()
+    wSClient.url(url).withHeaders("Accept" -> "application/json").get()
+    wSClient.url(url).withMethod("GET").get()
+    wSClient.url(url).withQueryString("search" -> "play").get()
+    wSClient.url(url).withRequestFilter(AhcCurlRequestLogger()).get()
+    wSClient.url(url).withRequestTimeout(Duration(10000,MILLISECONDS)).get()
+    wSClient.url(url).withVirtualHost("192.168.2.1").get()
+    //wSClient.url(url).withProxyServer().get()
 
     // ####################
     // Play v.2.4.x
@@ -153,6 +211,17 @@ class SSRFController @Inject() (wSClient: WSClient)  extends Controller {
     wSClient.url(url).post("amount=" + amount).map { response =>
       Ok(response.body)
     }
+
+    wSClient.url(url).withAuth("user", "password", WSAuthScheme.BASIC).post("amount=" + amount)
+    wSClient.url(url).withBody(EmptyBody).post("amount=" + amount)
+    wSClient.url(url).withFollowRedirects(true).post("amount=" + amount)
+    wSClient.url(url).withHeaders("Accept" -> "application/json").post("amount=" + amount)
+    wSClient.url(url).withMethod("POST").post("amount=" + amount)
+    wSClient.url(url).withQueryString("search" -> "play").post("amount=" + amount)
+    wSClient.url(url).withRequestFilter(AhcCurlRequestLogger()).post("amount=" + amount)
+    wSClient.url(url).withRequestTimeout(Duration(10000,MILLISECONDS)).post("amount=" + amount)
+    wSClient.url(url).withVirtualHost("192.168.2.1").post("amount=" + amount)
+    //wSClient.url(url).withProxyServer().get()
 
     // ####################
     // Play v.2.4.x
