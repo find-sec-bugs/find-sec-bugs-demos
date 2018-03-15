@@ -1,0 +1,34 @@
+<%@ page contentType="text/html; charset=ISO-8859-1" language="java" 
+	import="org.owasp.webgoat.plugin.GoatHillsFinancial.EmployeeStub, org.owasp.webgoat.plugin.rollbased.RoleBasedAccessControl, org.owasp.webgoat.session.WebSession"
+	errorPage="" %>
+<%@ page import="java.util.Iterator" %>
+<%@ page import="java.util.List" %>
+<div id="lesson_login">
+		<div id="lesson_login_txt">
+			<% 
+			WebSession webSession = ((WebSession)session.getAttribute("websession"));
+			%>
+			<form id="form1" name="form1" method="post" action="<%=webSession.getCurrentLesson().getFormAction()%>">
+			    	<label>
+			      	<select name="<%=RoleBasedAccessControl.EMPLOYEE_ID%>">
+			      	<%
+			      	//System.out.println("Retrieving employees list");
+			      	List employees = (List) session.getAttribute("RoleBasedAccessControl." + RoleBasedAccessControl.STAFF_ATTRIBUTE_KEY);
+			      	Iterator i = employees.iterator();
+					while (i.hasNext())
+					{
+						EmployeeStub stub = (EmployeeStub) i.next();
+					%>
+			      	<option value="<%=Integer.toString(stub.getId())%>"><%=stub.getFirstName() + " " + stub.getLastName() + " (" + stub.getRole() + ")"%></option>
+					<%}%>
+	                </select>
+		        </label>
+				<br>
+			    	<label>Password
+			    		<input name="password" type="password" size="10" maxlength="8" />
+			    </label>
+				<br>
+				<input type="submit" name="action" value="<%=RoleBasedAccessControl.LOGIN_ACTION%>"/>
+			</form>
+		</div>
+	</div>

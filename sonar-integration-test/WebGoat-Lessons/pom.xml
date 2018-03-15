@@ -1,0 +1,227 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+    <name>webgoat-plugins-parent</name>
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>org.owasp.webgoat.lesson</groupId>
+    <artifactId>webgoat-plugins-parent</artifactId>
+    <packaging>pom</packaging>
+    <version>1.0</version>
+
+    <properties>
+        <webgoat.container.version>7.1</webgoat.container.version>
+        <!--<sonar.sources>.</sonar.sources>-->
+    </properties>
+
+    <modules>
+        <module>common</module>
+        <module>goat-hills-financial</module>
+        <module>access-control-matrix</module>
+        <module>back-doors</module>
+        <module>basic-authentication</module>
+        <module>blind-numeric-sql-injection</module>
+        <module>blind-script</module>
+        <module>blind-string-sql-injection</module>
+        <module>bypass-html-field-restrictions</module>
+        <module>challenge</module>
+        <module>client-side-filtering</module>
+        <module>client-side-validation</module>
+        <module>command-injection</module>
+        <module>concurrency-cart</module>
+        <module>cross-site-scripting</module>
+        <module>csrf-prompt-by-pass</module>
+        <module>csrf-token-by-pass</module>
+        <module>csrf</module>
+        <module>dangerous-eval-injection</module>
+        <module>db-cross-site-scripting</module>
+        <module>db-sql-injection</module>
+        <module>dom-injection</module>
+        <module>dom-xss</module>
+        <module>dos-login</module>
+        <module>encoding</module>
+        <module>fail-open-authentication</module>
+        <module>forced-browsing</module>
+        <module>forgot-password</module>
+        <module>hidden-field-tampering</module>
+        <module>how-to-work</module>
+        <module>html-clues</module>
+        <module>http-basics</module>
+        <module>http-only</module>
+        <module>insecure-login</module>
+        <module>java-script-validation</module>
+        <module>json-injection</module>
+        <!--<module>lesson-converter</module>-->
+        <module>lesson-template-legacy</module>
+        <module>log-spoofing</module>
+        <module>malicious-file-execution</module>
+        <module>multi-level-login1</module>
+        <module>multi-level-login2</module>
+        <module>off-by-one</module>
+        <module>password-strength</module>
+        <module>path-based-access-control</module>
+        <module>phishing</module>
+        <module>reflected-xss</module>
+        <module>remote-admin-flaw</module>
+        <module>role-based-access-control</module>
+        <module>same-origin-policy-protection</module>
+        <module>session-fixation</module>
+        <module>silent-transactions</module>
+        <module>soap-request</module>
+        <module>sql-injection</module>
+        <module>sql-numeric-injection</module>
+        <module>sql-string-injection</module>
+        <module>stored-xss</module>
+        <module>thread-safety-problem</module>
+        <module>trace-xss</module>
+        <module>unchecked-email</module>
+        <module>weak-authentication-cookie</module>
+        <module>weak-session-id</module>
+        <module>ws-sax-injection</module>
+        <module>ws-sql-injection</module>
+        <module>wsdl-scanning</module>
+        <module>xml-injection</module>
+        <module>xpath-injection</module>
+        <module>xxe</module>
+        <module>zip-bomb</module>
+
+        <!--Should be defined as the last module -->
+        <module>dist</module>
+    </modules>
+
+    <dependencies>
+        <dependency>
+            <groupId>org.owasp.webgoat</groupId>
+            <artifactId>webgoat-container</artifactId>
+            <scope>provided</scope>
+            <type>jar</type>
+        </dependency>
+    </dependencies>
+    <dependencyManagement>
+
+        <dependencies>
+            <dependency>
+                <groupId>javax.servlet</groupId>
+                <artifactId>javax.servlet-api</artifactId>
+                <version>3.1.0</version>
+            </dependency>
+            <dependency>
+                <groupId>org.owasp.webgoat</groupId>
+                <artifactId>webgoat-container</artifactId>
+                <version>${webgoat.container.version}</version>
+                <type>jar</type>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+
+    <build>
+        <resources>
+            <resource>
+                <directory>${basedir}/src/main/java</directory>
+            </resource>
+            <resource>
+                <directory>${basedir}/src/main/resources</directory>
+            </resource>
+        </resources>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.1</version>
+                <configuration>
+                    <source>1.7</source>
+                    <target>1.7</target>
+                    <encoding>ISO-8859-1</encoding>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-dependency-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <id>copy-artifact</id>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>copy</goal>
+                        </goals>
+                        <configuration>
+                            <artifactItems>
+                                <artifactItem>
+                                    <groupId>${project.groupId}</groupId>
+                                    <artifactId>${project.artifactId}</artifactId>
+                                    <version>${project.version}</version>
+                                    <type>${project.packaging}</type>
+                                </artifactItem>
+                            </artifactItems>
+                            <outputDirectory>../target/plugins</outputDirectory>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+
+
+            
+            <plugin>
+                <groupId>com.github.spotbugs</groupId>
+                <artifactId>spotbugs-maven-plugin</artifactId>
+                <version>3.1.1</version>
+                <configuration>
+                    <fork>false</fork>
+                    <timeout>9999999</timeout>
+                    <effort>Max</effort>
+                    <threshold>Low</threshold>
+                    <failOnError>true</failOnError>
+                    <includeFilterFile>${session.executionRootDirectory}/findbugs-security-include.xml</includeFilterFile>
+                    <excludeFilterFile>${session.executionRootDirectory}/findbugs-security-exclude.xml</excludeFilterFile>
+                    <plugins>
+                        <plugin>
+                            <groupId>com.h3xstream.findsecbugs</groupId>
+                            <artifactId>findsecbugs-plugin</artifactId>
+                            <version>1.8.0</version>
+                        </plugin>
+                    </plugins>
+                </configuration>
+            </plugin>
+            
+        </plugins>
+     
+    </build>
+
+    <profiles>
+
+        <!-- Compilation of the JSP with Jetty 9.3.6 -->
+        <!--<profile>-->
+            <!--<id>jetty946Jsp</id>-->
+
+            <!--<activation>-->
+                <!--<activeByDefault>true</activeByDefault>-->
+            <!--</activation>-->
+
+            <!--<build>-->
+                <!--<plugins>-->
+                    <!--<plugin>-->
+                        <!--<groupId>org.eclipse.jetty</groupId>-->
+                        <!--<artifactId>jetty-jspc-maven-plugin</artifactId>-->
+                        <!--<version>9.4.6.v20170531</version> &lt;!&ndash; Latest version &ndash;&gt;-->
+                        <!--<executions>-->
+                            <!--<execution>-->
+                                <!--<id>jspc</id>-->
+                                <!--<goals>-->
+                                    <!--<goal>jspc</goal>-->
+                                <!--</goals>-->
+                                <!--<configuration>-->
+                                    <!--<jspc>-->
+                                        <!--<smapSuppressed>false</smapSuppressed>-->
+                                        <!--<smapDumped>true</smapDumped>-->
+                                    <!--</jspc>-->
+                                    <!--<keepSources>true</keepSources>-->
+                                    <!--<useProvidedScope>true</useProvidedScope>-->
+                                    <!--<webAppSourceDirectory>${basedir}/src/main/resources</webAppSourceDirectory>-->
+                                <!--</configuration>-->
+                            <!--</execution>-->
+                        <!--</executions>-->
+                    <!--</plugin>-->
+                <!--</plugins>-->
+            <!--</build>-->
+        <!--</profile>-->
+
+    </profiles>
+</project>
