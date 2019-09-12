@@ -129,6 +129,41 @@
         </profile>
 
 
+        <!-- Compilation of the JSP with Jetty 9.4.20 -->
+        <profile>
+            <id>jetty9420Jsp</id>
+
+            <activation>
+                <activeByDefault>false</activeByDefault>
+            </activation>
+
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.eclipse.jetty</groupId>
+                        <artifactId>jetty-jspc-maven-plugin</artifactId>
+                        <version>9.4.20.v20190813</version> <!-- Latest version -->
+                        <executions>
+                            <execution>
+                                <id>jspc</id>
+                                <goals>
+                                    <goal>jspc</goal>
+                                </goals>
+                                <configuration>
+                                    <jspc>
+                                        <smapSuppressed>false</smapSuppressed>
+                                        <smapDumped>true</smapDumped>
+                                    </jspc>
+                                    <keepSources>true</keepSources>
+                                    <useProvidedScope>true</useProvidedScope>
+                                </configuration>
+                            </execution>
+                        </executions>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+
         <!-- Compilation of the JSP with Jetty 9.3.6 -->
         <profile>
             <id>jetty936Jsp</id>
@@ -142,7 +177,7 @@
                     <plugin>
                         <groupId>org.eclipse.jetty</groupId>
                         <artifactId>jetty-jspc-maven-plugin</artifactId>
-                        <version>9.3.6.v20151106</version> <!-- Latest version -->
+                        <version>9.3.6.v20151106</version>
                         <executions>
                             <execution>
                                 <id>jspc</id>
