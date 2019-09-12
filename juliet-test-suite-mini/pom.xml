@@ -49,48 +49,10 @@
                         <plugin>
                             <groupId>com.h3xstream.findsecbugs</groupId>
                             <artifactId>findsecbugs-plugin</artifactId>
-                            <version>1.8.0</version>
-                        </plugin>
-                        <plugin>
-                            <groupId>com.h3xstream.findsecbugs</groupId>
-                            <artifactId>findsecbugs-graph-plugin</artifactId>
-                            <!--<classifier>jar-with-dependencies</classifier>-->
-                            <version>1.8.0</version>
+                            <version>1.9.0</version>
                         </plugin>
                     </plugins>
                 </configuration>
-                <dependencies>
-                    <dependency>
-                        <groupId>org.neo4j</groupId>
-                        <artifactId>neo4j</artifactId>
-                        <version>3.2.6</version>
-                        <scope>compile</scope>
-                        <exclusions>
-                            <exclusion>
-                                <groupId>org.neo4j</groupId>
-                                <artifactId>neo4j-cypher-compiler-2.3</artifactId>
-                            </exclusion>
-                            <exclusion>
-                                <groupId>org.neo4j</groupId>
-                                <artifactId>neo4j-cypher-compiler-3.1</artifactId>
-                            </exclusion>
-                            <exclusion>
-                                <groupId>org.neo4j</groupId>
-                                <artifactId>neo4j-jmx</artifactId>
-                            </exclusion>
-                            <!--<exclusion>-->
-                            <!--<groupId>org.neo4j</groupId>-->
-                            <!--<artifactId>neo4j-consistency-check</artifactId>-->
-                            <!--</exclusion>-->
-                        </exclusions>
-                    </dependency>
-                    <dependency>
-                        <groupId>com.h3xstream.findsecbugs</groupId>
-                        <artifactId>findsecbugs-plugin</artifactId>
-                        <version>1.8.0</version>
-                        <scope>compile</scope>
-                    </dependency>
-                </dependencies>
             </plugin>
         </plugins>
     </build>
