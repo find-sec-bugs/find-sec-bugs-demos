@@ -29,6 +29,7 @@ public final class LoggingUtil
     {
         ClassLoader cl = Thread.currentThread().getContextClassLoader();
         URL url = cl.getResource("logging.properties");
+        URL url = cl.getResource("logging.properties");
         if (url != null)
         {
             try(InputStream in = url.openStream())
